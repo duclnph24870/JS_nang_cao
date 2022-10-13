@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List product</title>
+    <link rel="icon" href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/cf5472ea14.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/public.css">
+    <link rel="stylesheet" href="./user.css">
+</head>
+<body>
+    <div class="app">
+        <!-- === header ===  -->
+        <header class="header">
+            <!-- logo  -->
+            <div class="logo">
+                <img src="../images/logo_page.png" alt="logo">
+            </div>
+
+            <!-- search -->
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm" required class="search__input">
+                <i class="fa-solid fa-magnifying-glass search__icon"></i>
+
+                <div class="search__result">
+                    <div class="search__result-item">
+                        <div class="search__result-image">
+                            <img src="https://cdn.daotaobeptruong.vn/wp-content/uploads/2021/01/banh-mi-viet-nam.jpg" alt="">
+                        </div>
+                        <div class="search__result-content">
+                            <div class="search__result-name">Bánh mì</div>
+                            <div class="search__result-price">12000 VNĐ</div>
+                        </div>
+
+                        <i class="fa-solid fa-magnifying-glass search__result-icon"></i>
+                    </div>
+                    <div class="search__result-item">
+                        <div class="search__result-image">
+                            <img src="https://cdn.daotaobeptruong.vn/wp-content/uploads/2021/01/banh-mi-viet-nam.jpg" alt="">
+                        </div>
+                        <div class="search__result-content">
+                            <div class="search__result-name">Bánh mì</div>
+                            <div class="search__result-price">12000 VNĐ</div>
+                        </div>
+
+                        <i class="fa-solid fa-magnifying-glass search__result-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- cart  -->
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span class="number-product">1</span>
+            </div>
+        </header>
+
+        <div class="line"></div>
+
+        <!-- === menu ===  -->
+        <div class="navbar">
+            <div class="navbar__item">
+
+            </div>
+        </div>
+
+        <!-- === content === -->
+        <div class="content"></div>
+
+
+        <!-- === modal === -->
+        <div class="cart__modal">
+            <div class="cart__content">
+                
+                <div class="cart__content-title">---- Giỏ Hàng ----</div>
+
+                <!-- list  -->
+                <div class="cart__content-list">
+                    <div class="cart__content-item">
+                        <div class="cart__content-item-avt">
+                            <img src="http://reviewvilla.vn/wp-content/uploads/2022/06/Banh-mi-Nha-Trang-15.jpg" alt="">
+                        </div>
+                        <div class="cart__content-item-main">
+                            <div class="cart__content-item-name">Bánh mì</div>
+                            <div class="cart__content-item-price">12000 VNĐ</div>
+                        </div>
+
+                        <div class="cart__content-item-number">
+                            <button class="cart__content-item-btn cart__content-item-minus">-</button>
+                            <input class="cart__content-item-amount" value="3">
+                            <button class="cart__content-item-btn cart__content-item-plus">+</button>
+                        </div>
+
+                        <div class="cart__content-item-delete">Xóa</div>
+                    </div>
+
+                    <div class="cart__content-item">
+                        <div class="cart__content-item-avt">
+                            <img src="http://reviewvilla.vn/wp-content/uploads/2022/06/Banh-mi-Nha-Trang-15.jpg" alt="">
+                        </div>
+                        <div class="cart__content-item-main">
+                            <div class="cart__content-item-name">Bánh mì</div>
+                            <div class="cart__content-item-price">12000 VNĐ</div>
+                        </div>
+
+                        <div class="cart__content-item-number">
+                            <button class="cart__content-item-btn cart__content-item-minus">-</button>
+                            <input class="cart__content-item-amount" value="3">
+                            <button class="cart__content-item-btn cart__content-item-plus">+</button>
+                        </div>
+
+                        <div class="cart__content-item-delete">Xóa</div>
+                    </div>
+                    
+                </div>
+
+                <!-- thanh toán  -->
+                <div class="cart__content-pay">
+                    <div class="cart__content-general">
+                        <div class="cart__content-general-item">
+                            <div class="cart__content-general-title">Tổng hợp</div>
+                            <div class="cart__content-general-price">0 đ</div>
+                        </div>
+                        <div class="cart__content-general-item">
+                            <div class="cart__content-general-title">Phí giao hàng </div>
+                            <div class="cart__content-general-price">0 đ</div>
+                        </div>
+                    </div>
+
+                    <div class="cart__content-submit">
+                        <span class="btn-label">THANH TOÁN</span> 
+                        <span class="btn-price">0 đ</span>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+    <script src="../public/public.js"></script>
+    <script>
+        on_off_cartModal();    
+    </script>
+
+</html>
