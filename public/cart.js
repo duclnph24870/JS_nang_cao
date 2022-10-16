@@ -76,7 +76,7 @@ const cart = {
 
     async selectItemCart () {
         let cartList = JSON.parse(localStorage.getItem('cart')) || [];
-        let idCartList = cartList.map(item => item.id);
+        let idCartList = cartList.map(item => +item.id);
 
         await fetch (apiLink)
         .then(res => res.json())
@@ -212,18 +212,20 @@ const cart = {
 
     async render () {
         let cartList = JSON.parse(localStorage.getItem('cart')) || [];
-        let idCartList = cartList.map(item => item.id);
+        let idCartList = cartList.map(item => +item.id);
 
         loading(true,'.cart__content-list');
         await fetch (apiLink)
             .then(res => res.json())
             .then(res => {
-                cartListArr = res.filter(item => idCartList.includes(item.id))
+                cartListArr = res.filter(item => {
+                    return idCartList.includes(item.id);
+                })
                 this.showNumberCart(cartListArr);
 
                 // hiển thị giao diện cartList
                 $('.cart__content-list').innerHTML = cartListArr.map((item,index) => {
-                    let quantityItem = cartList.find(prLocal => prLocal.id == item.id).quantity;
+                    let quantityItem = cartList.find(prLocal => prLocal.id == item.id).quantity || 0;
                     return `
                         <div class="cart__content-item" data-id="${item.id}">
                             <div class="cart__content-item-avt">
@@ -344,23 +346,31 @@ const cart = {
 
     add (id) {
         let cartList = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        let check = !cartList.find(item => item.id == id);
 
-        if (check) {
-            let itemAdd = {
-                id: id,
-                quantity: 1,
-            }
-    
-            cartList.push(itemAdd);
-    
-            localStorage.setItem('cart',JSON.stringify(cartList));
-            this.render();
-            showMessage.render('success','Thêm sản phẩm thành công');
-        }else {
-            showMessage.render('err','Sản phẩm đã tồn tại');
-        }
+        fetch(apiLink + '/' + id)
+            .then(res => res.json())
+            .then(res => {
+
+                let check = !cartList.find(item => item.id == id);
+        
+                if (check && res.number > 0) {
+                    let itemAdd = {
+                        id: id,
+                        quantity: 1,
+                    }
+            
+                    cartList.push(itemAdd);
+            
+                    localStorage.setItem('cart',JSON.stringify(cartList));
+                    this.render();
+                    cartList = JSON.parse(localStorage.getItem('cart')) || [];
+                    this.showNumberCart(cartList);
+                    showMessage.render('success','Thêm sản phẩm thành công');
+                }else {
+                    showMessage.render('err','Sản phẩm đã tồn tại hoặc đã hết hàng');
+                }
+            })
+        
     }
 }
 

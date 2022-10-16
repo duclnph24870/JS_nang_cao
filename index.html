@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaHut</title>
+    <link rel="icon" href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/cf5472ea14.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .app {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        img {
+            width: 700px;
+            height: 400px;
+        }
+
+        @keyframes quay {
+            0%{
+                transform: rotate(0);
+            } 
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        i {
+            animation: quay linear 1s infinite;
+            color: #C8102E;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <img src="./images/logo.png" alt="">
+        <h1>Chào mừng bạn đến với PizzaHut</h1>
+        <i class="fa-solid fa-spinner turn"></i>
+        <a href="./user/index.html" hidden></a>
+    </div>
+</body>
+
+    <script>
+        setTimeout(function () {
+            document.querySelector('a').click();
+        },3000);
+    </script>
+
+</html>

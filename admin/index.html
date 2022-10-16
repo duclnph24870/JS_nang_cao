@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaHut - Admin</title>
+    <link rel="icon" href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/cf5472ea14.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/public.css">
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+    <div class="app">
+        <!-- === header ===  -->
+        <header class="header">
+            <!-- logo  -->
+            <a href="/user/index.html" class="logo">
+                <img src="../images/logo_page.png" alt="logo">
+            </a>
+
+            <!-- search -->
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm" required class="search__input">
+                <i class="fa-solid fa-magnifying-glass search__icon"></i>
+
+                <div class="search__result">
+                    <!-- <div class="search__result-item">
+                        <div class="search__result-image">
+                            <img src="https://cdn.daotaobeptruong.vn/wp-content/uploads/2021/01/banh-mi-viet-nam.jpg" alt="">
+                        </div>
+                        <div class="search__result-content">
+                            <div class="search__result-name">Bánh mì</div>
+                            <div class="search__result-price">12000 VNĐ</div>
+                        </div>
+
+                        <i class="fa-solid fa-magnifying-glass search__result-icon"></i>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- cart  -->
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span class="number-product"></span>
+            </div>
+        </header>
+
+        <div class="line"></div>
+
+
+        <!-- === content === -->
+        <div class="content">
+            <!-- left  -->
+            <div class="content-left">
+                <div class="content-left__item" data-id="0">Danh sách món ăn</div>
+                <div class="content-left__item" data-id="1">Món ăn</div>
+                <div class="content-left__item" data-id="2">Danh mục</div>
+                <div class="content-left__item" data-id="3">Báo cáo thống kê</div>
+            </div>
+
+            <!-- right  -->
+            <div class="content-right">
+                <!-- === table === -->
+                <div class="content-right__main tableList">
+                    <div class="content-right__title">
+                        <h1 class="content-right__title-text">Danh sách món ăn</h1>
+                        <button class="content-right__addItem">Thêm mới <i class="fas fa-plus"></i></button>
+                    </div>
+                    <table class="table-product" border="1">
+                        <thead>
+                            <th>STT</th>
+                            <th>Tên món ăn</th>
+                            <th>Đơn giá</th>
+                            <th>Hình ảnh</th>
+                            <th>Danh mục</th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Bánh mì</td>
+                                <td>100000</td>
+                                <td>
+                                    <img src="https://file1.dangcongsan.vn/data/0/images/2021/02/08/duongntcd/13-chung-tet-td.jpg" alt="" class="imgProduct">
+                                </td>
+                                <td>Pizza</td>
+                                <td>Còn hàng</td>
+                                <td>
+                                    <button class="tableBtn edit">Sửa</button>
+                                    <button class="tableBtn delete">Xóa</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- === from món ăn === -->
+                <div class="content-right__main">
+                    <h1 class="form-title">Thêm mới món ăn</h1>
+                    <form class="admin-from">
+                        <!-- === left === -->
+                        <div class="from-left">
+                            <div class="input-block">
+                                <div class="block">
+                                    <input class="input-block__input name" autocomplete="off" name="name" type="text" required >
+                                    <span class="placeholder">Tên món ăn</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+                
+                            <div class="input-block">
+                                <div class="block">
+                                    <input class="input-block__input number" autocomplete="off" name="name" type="number" required >
+                                    <span class="placeholder">Số lượng</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+                
+                            <div class="input-block">
+                                <div class="block">
+                                    <input class="input-block__input price" autocomplete="off" name="name" type="number" required >
+                                    <span class="placeholder">Giá</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+                
+                            <div class="input-block select">
+                                <div class="block">
+                                    <select class="input-block__input category" required id="">
+                                        <!-- <option value="">--- Chọn ---</option>
+                                        <option value="1">Tráng miệng</option>
+                                        <option value="2">Đồ nước</option>
+                                        <option value="3">Đồ chấm</option>
+                                        <option value="4">Đồ uống</option> -->
+                                    </select>
+                                    <span class="placeholder">Loại đồ ăn</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+
+                            <div class="input-block textarea">
+                                <div class="block">
+                                    <textarea class="input-block__input description" id="" cols="30" rows="10" required></textarea>
+                                    <span class="placeholder">Mô tả</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+                        </div>
+
+                        <!-- === right === -->
+                        <div class="from-right">
+                            <div class="input-block no-placeholder">
+                                <label for="image">
+                                    <img src="https://branditechture.agency/brand-logos/wp-content/uploads/2022/06/pizza-hut.png" alt="" class="image-img">
+                                </label>
+                                <div class="block">
+                                    <input type="file" accept="image/png, image/gif, image/jpeg" class="input-block__input" hidden id="image">
+                                    <label for="image" class="image__input">
+                                        <i class="fas fa-image"></i>
+                                        Chọn hình ảnh sản phẩm
+                                    </label>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+
+                            <div class="input-block radio no-placeholder">
+                                <div class="block">
+                                    <span>Sản phẩm</span>                                    
+                                    <input type="radio" value="0" name="status" checked> <span>Mới</span>
+                                    <input type="radio" value="1" name="status"> <span>Truyền thống</span>
+                                    <input type="radio" value="2" name="status"> <span>Phải thử</span>
+                                </div>
+                                <div class="input-err"></div>
+                            </div>
+                        </div>
+                        
+                        
+                        <button type="submit" data-type="add" data-id="" class="btnEdit">Hoàn Thành <i class="fa-solid fa-spinner"></i></button>
+                    </form>
+                </div>
+
+                <div class="content-right__main">
+                    Danh mục
+                </div>
+
+                <div class="content-right__main">
+                    Báo cáo
+                </div>
+            </div>
+        </div>
+
+
+        <!-- === modal === -->
+        <div class="cart__modal">
+            <div class="cart__content">
+                
+                <div class="cart__content-title">---- Giỏ Hàng ----</div>
+
+                <!-- list  -->
+                <div class="cart__content-list">
+                    <!-- <div class="cart__content-item">
+                        <div class="cart__content-item-avt">
+                            <img src="http://reviewvilla.vn/wp-content/uploads/2022/06/Banh-mi-Nha-Trang-15.jpg" alt="">
+                        </div>
+                        <div class="cart__content-item-main">
+                            <div class="cart__content-item-name">Bánh mì</div>
+                            <div class="cart__content-item-price">12000 VNĐ</div>
+                        </div>
+
+                        <div class="cart__content-item-number">
+                            <button class="cart__content-item-btn cart__content-item-minus">-</button>
+                            <input class="cart__content-item-amount" value="3">
+                            <button class="cart__content-item-btn cart__content-item-plus">+</button>
+                        </div>
+
+                        <div class="cart__content-item-delete">Xóa</div>
+                    </div> -->
+                </div>
+
+                <!-- thanh toán  -->
+                <div class="cart__content-pay">
+                    <div class="cart__content-general">
+                        <div class="cart__content-general-item">
+                            <div class="cart__content-general-title">Tổng hợp</div>
+                            <div class="cart__content-general-price sumPrice">0 đ</div>
+                        </div>
+                        <div class="cart__content-general-item">
+                            <div class="cart__content-general-title">Phí giao hàng </div>
+                            <div class="cart__content-general-price shipPrice">0 đ</div>
+                        </div>
+                    </div>
+
+                    <div class="cart__content-submit">
+                        <span class="btn-label">THANH TOÁN</span> 
+                        <span class="btn-price">0 đ</span>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="message-notify">
+    </div>
+</body>
+
+    <script type="module" src="../public/public.js"></script>
+    <script type="module" src="./admin.js"></script>
+
+</html>
