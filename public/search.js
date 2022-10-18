@@ -1,23 +1,18 @@
+import { loading } from "./loading.js";
+
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 var productList = [];
 var apiLink = 'http://localhost:4013/products';
 
-await fetch(apiLink)
-    .then(res => {
-        return res.json();
-    })
-    .then(res => {
-        productList = res;
-        return res;
-    })
-
 const search = {
 
     start () {
         this.searchKeyword();
     },
+
+    timeoutCurr: undefined,
 
     search (type,value,productList) {
         if (type == 'search') {
@@ -44,24 +39,40 @@ const search = {
     searchKeyword () {
         const inputEl = $('.search__input');
         inputEl.oninput = () => {
-            const inputVl = inputEl.value;
-            const result = this.search('search',this.removeVietnameseTones(inputVl),productList);
-            $('.search__result').innerHTML = result.map((item,index) => {
+            $('.search__result').innerHTML = '';
+            if (search.timeoutCurr) {
+                clearTimeout(search.timeoutCurr);
+            }
 
-                return index < 5 ? `
-                    <div class="search__result-item">
-                        <div class="search__result-image">
-                            <img src="${item.imgUrl}" alt="">
-                        </div>
-                        <div class="search__result-content">
-                            <div class="search__result-name">${item.name}</div>
-                            <div class="search__result-price">${item.price} VNĐ</div>
-                        </div>
-
-                        <i class="fa-solid fa-magnifying-glass search__result-icon"></i>
-                    </div>
-                ` : '';
-            }).join('') || '<div class="search__result-item" style="font-size: 1.5rem;">Không tìm thấy sản phẩm</div>';
+            search.timeoutCurr = setTimeout (function () {
+                loading(true,'.search .search__icon');
+                const inputVl = inputEl.value;
+                fetch(apiLink)
+                    .then(res => {
+                        return res.json();
+                    })
+                    .then(res => {
+                        $('.search .search__icon').innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+                        productList = res;
+                        const result = search.search('search',search.removeVietnameseTones(inputVl),productList);
+                        $('.search__result').innerHTML = result.map((item,index) => {
+            
+                            return index < 5 ? `
+                                <div class="search__result-item">
+                                    <div class="search__result-image">
+                                        <img src="${item.imgUrl}" alt="">
+                                    </div>
+                                    <div class="search__result-content">
+                                        <div class="search__result-name">${item.name}</div>
+                                        <div class="search__result-price">${item.price} VNĐ</div>
+                                    </div>
+            
+                                    <i class="fa-solid fa-magnifying-glass search__result-icon"></i>
+                                </div>
+                            ` : '';
+                        }).join('') || '<div class="search__result-item" style="font-size: 1.5rem;">Không tìm thấy sản phẩm</div>';
+                    })
+            },800);
         }
     },
 

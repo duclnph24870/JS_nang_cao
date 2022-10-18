@@ -104,7 +104,7 @@ i.turn {
     color: #000;
 }
 
-.search__input:valid,.search__input:valid ~ .search__icon {
+.search__input:valid,.search__input:valid ~ .search__icon i {
     border-color: var(--primary);
     color: var(--primary);
 }
