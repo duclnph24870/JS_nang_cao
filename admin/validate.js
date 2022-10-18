@@ -213,10 +213,6 @@ const validate = {
         }
     },
 
-    submit () {
-        
-    },
-
     isRequire (selector,message) {
         return {
             selector,
