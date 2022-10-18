@@ -13,7 +13,7 @@ const validate = {
     linkPreview: undefined,
     start () {
         this.handleValidate(this.option);
-        this.submit();
+        // this.submit();
     },
 
     uploadItem (type = 'add',id = undefined,data) {
